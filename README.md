@@ -22,20 +22,13 @@ A Laravel-based microservice that translates structured content fields (such as 
             - `Requests/ChatCompletionRequest.php`: Wraps prompt payload for chat completions.
         - `TranslationService.php`: Core domain service that builds translation prompts, calls `OpenAIConnector`, and parses responses. Includes robust fallbacks for non-JSON outputs.
 
-- **config/**: Laravel and package configuration files.
 - **database/**
     - `migrations/`: Database schema migrations. Example: `create_content_translations_table` migration.
-    - `seeders/`, `factories/`: Test data generation.
-- **routes/**: API/web routes.
-- **resources/**: Views, JS, CSS (if UI or resources are needed).
+- **routes/**: API/routes.
 - **tests/**
     - **Unit/**
         - `TranslationServiceTest.php`: Unit tests for TranslationService behavior (success, non-JSON fallback, request exception wrapping).
         - `TranslateContentJobTest.php`: Tests the queue job integration with the service.
-        - Additional unit tests for Enums, Filters, and Resources.
-    - **Feature/**: Feature/integration tests (if present).
-
-- **public/**, **storage/**, **bootstrap/**, **vendor/**: Standard Laravel directories.
 
 ---
 
