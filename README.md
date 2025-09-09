@@ -59,7 +59,6 @@ A Laravel-based microservice that translates structured content fields (such as 
 - PHP 8.2+ with required extensions (ctype, mbstring, openssl, pdo, tokenizer, xml, curl)
 - Composer 2.x
 - A database (SQLite/MySQL/PostgreSQL) if you plan to persist data
-- Node.js 18+ (only if you will build frontend assets)
 
 **Steps (fresh clone):**
 
@@ -79,10 +78,24 @@ cp .env.example .env
 ```bash
 php artisan key:generate
 ```
-5. Configure .env
+5. Configure environment variables (database, OpenAI key, queue):
 ```bash
+# Database
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=ngage_translation
+DB_USERNAME=root
+DB_PASSWORD=your_password
+
+# OpenAI
 OPENAI_API_KEY=your_openai_api_key
+
+# Queue (optional)
+QUEUE_CONNECTION=database
+
 ```
+
 6. Run migrations
 ```bash
 php artisan migrate
@@ -91,7 +104,10 @@ php artisan migrate
 ```bash
 php artisan queue:work
 ```
-
+8. Start the local server (for API testing):
+```bash
+php artisan serve
+```
 
 **Sample Request:**
 ```bash
